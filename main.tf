@@ -34,11 +34,16 @@ resource "azurerm_resource_group" "rg" {
 // Storage Account
 
 resource "azurerm_storage_account" "storage" {
-  name                     = "${var.class_name}${var.student_name}${var.environment}${random_integer.deployment_id_suffix.result}st"
-  resource_group_name      = azurerm_resource_group.rg.name
-  location                 = azurerm_resource_group.rg.location
-  account_tier             = "Standard"
+  name                = "${var.class_name}${var.student_name}${var.environment}${random_integer.deployment_id_suffix.result}st"
+  resource_group_name = azurerm_resource_group.rg.name
+  location            = azurerm_resource_group.rg.location
+  account_tier        = "Standard"
+
   account_replication_type = "LRS"
 
+
+
   tags = local.tags
+
+
 }
